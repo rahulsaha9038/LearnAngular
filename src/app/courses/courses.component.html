@@ -1,0 +1,23 @@
+<ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link active" href="">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="">Map</a></li>
+    </ul>
+    
+    <h2>List of Courses:</h2>
+            <div *ngIf="courses.length>0;then coursesList else noCourse"></div>
+            <ng-template #coursesList>
+            <ul>
+                <li *ngFor="let c of courses">
+                {{c}}
+                <button (click)="onRemove(c)">Remove</button>
+                </li>
+            </ul>
+        </ng-template>
+        <ng-template #noCourse>
+            <p>No Courses</p>
+        </ng-template>
+        <br><br>
+            <input type="text" [appInputFormat]="'uppercase'"><br><br>
+            <input type="text" [(ngModel)]="email" (keyup.enter)="onKeyUp()"><br><br>
+            <button class="btn" (click)="onSave($event)" [class.btn-primary]="isPrimary">Save</button>
+            
